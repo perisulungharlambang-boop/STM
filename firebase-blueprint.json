@@ -1,0 +1,156 @@
+{
+  "entities": {
+    "Member": {
+      "title": "Member",
+      "description": "STM community member profile and registration status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "familySize": { "type": "number" },
+        "role": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "jabatan": { "type": "string" }
+      },
+      "required": ["id", "name", "username", "phone", "address", "role", "status", "createdAt"]
+    },
+    "Bill": {
+      "title": "Bill",
+      "description": "Invoicing dues, mandatory contributions, and payment verification records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string" },
+        "memberId": { "type": "string" },
+        "memberName": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "paymentProof": { "type": "string" },
+        "paidAt": { "type": "string" },
+        "approvedBy": { "type": "string" }
+      },
+      "required": ["id", "title", "amount", "dueDate", "status", "memberId", "memberName"]
+    },
+    "FinancialRecord": {
+      "title": "FinancialRecord",
+      "description": "Double-entry bookkeeping ledger logs tracking the community cashflow",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "addedBy": { "type": "string" }
+      },
+      "required": ["id", "type", "category", "amount", "description", "date", "addedBy"]
+    },
+    "DonationCampaign": {
+      "title": "DonationCampaign",
+      "description": "Fundraising/crowdfunding goals for specific social aid goals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "currentAmount": { "type": "number" },
+        "deadline": { "type": "string" },
+        "status": { "type": "string" },
+        "creator": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "contributions": {
+          "type": "array",
+          "description": "List of direct contributions logged on this goal"
+        }
+      },
+      "required": ["id", "title", "description", "targetAmount", "currentAmount", "deadline", "status", "creator", "createdAt"]
+    },
+    "ForumPost": {
+      "title": "ForumPost",
+      "description": "Discussion threads and replies for the members rembug forum",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "comments": {
+          "type": "array",
+          "description": "Comment threads left by discussion participants"
+        }
+      },
+      "required": ["id", "title", "content", "authorId", "authorName", "role", "createdAt"]
+    },
+    "ActivityNews": {
+      "title": "ActivityNews",
+      "description": "Public news channel postings showing pictures & videos of operations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "date": { "type": "string" },
+        "location": { "type": "string" },
+        "addedBy": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "mediaType": { "type": "string" }
+      },
+      "required": ["id", "title", "content", "date", "location", "addedBy"]
+    },
+    "SystemSetting": {
+      "title": "SystemSetting",
+      "description": "Global application configuration settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationName": { "type": "string" },
+        "tagline": { "type": "string" },
+        "adminWhatsApp": { "type": "string" },
+        "defaultDuesAmount": { "type": "number" }
+      },
+      "required": ["id", "organizationName", "tagline", "adminWhatsApp", "defaultDuesAmount"]
+    }
+  },
+  "firestore": {
+    "members": {
+      "schema": "Member",
+      "description": "Collection of all members and admins (registered or waiting review)"
+    },
+    "bills": {
+      "schema": "Bill",
+      "description": "Collection of individual member invoices"
+    },
+    "finances": {
+      "schema": "FinancialRecord",
+      "description": "Cashbook double-entry ledger database"
+    },
+    "donations": {
+      "schema": "DonationCampaign",
+      "description": "Social welfare crowdfunding campaigns database"
+    },
+    "posts": {
+      "schema": "ForumPost",
+      "description": "Rembug discussion board collection"
+    },
+    "news": {
+      "schema": "ActivityNews",
+      "description": "News announcements on activities with rich media attachments"
+    },
+    "settings": {
+      "schema": "SystemSetting",
+      "description": "Global application settings and metadata configurations"
+    }
+  }
+}

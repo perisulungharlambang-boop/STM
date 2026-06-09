@@ -1,0 +1,6 @@
+{
+  "name": "STM Serikat Tolong Menolong",
+  "description": "Platform digital interaktif Yayasan Serikat Tolong Menolong (STM) untuk manajemen anggota, iuran, transparansi keuangan, dan forum gotong royong.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
